@@ -17,8 +17,8 @@
     "lint": "eslint src tests",
     "test": "vitest run",
     "test:watch": "vitest",
-    "dist:win": "npm run build && electron-builder --win --x64",
-    "dist:dir": "npm run build && electron-builder --dir"
+    "dist:win": "npm run build && electron-builder --win --x64 --publish never",
+    "dist:dir": "npm run build && electron-builder --dir --publish never"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
