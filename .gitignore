@@ -9,3 +9,4 @@ dist/
 .env.*
 *.log
 coverage/
+zaion-affiliate-studio-source-*.zip
