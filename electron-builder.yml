@@ -1,0 +1,53 @@
+# Zaion Affiliate Studio — empacotamento Windows
+appId: com.zaion.affiliatestudio
+productName: Zaion Affiliate Studio
+executableName: ZaionAffiliateStudio
+copyright: Copyright © 2026 Zaion Technology
+directories:
+  output: release
+  buildResources: build
+files:
+  - out/**
+  - package.json
+  - '!**/*.map'
+extraResources:
+  - from: build/icon.png
+    to: icon.png
+  - from: build/tray.ico
+    to: tray.ico
+  - from: build/tray.png
+    to: tray.png
+asar: true
+npmRebuild: false
+win:
+  icon: build/icon.ico
+  target:
+    - target: nsis
+      arch: [x64]
+    - target: portable
+      arch: [x64]
+  # sem certificado de assinatura de código: o Windows SmartScreen pode exibir alerta
+  signAndEditExecutable: true
+  requestedExecutionLevel: asInvoker
+nsis:
+  artifactName: Zaion-Affiliate-Studio-Setup-${version}-x64.${ext}
+  oneClick: false
+  perMachine: false
+  allowElevation: true
+  allowToChangeInstallationDirectory: true
+  createDesktopShortcut: always
+  createStartMenuShortcut: true
+  shortcutName: Zaion Affiliate Studio
+  uninstallDisplayName: Zaion Affiliate Studio
+  installerIcon: build/icon.ico
+  uninstallerIcon: build/icon.ico
+  installerHeaderIcon: build/icon.ico
+  installerSidebar: build/installerSidebar.bmp
+  uninstallerSidebar: build/installerSidebar.bmp
+  # dados do usuário (%APPDATA%) são preservados na desinstalação e em atualizações
+  deleteAppDataOnUninstall: false
+  language: '1046'
+  include: build/installer.nsh
+portable:
+  artifactName: Zaion-Affiliate-Studio-Portable-${version}-x64.${ext}
+  requestExecutionLevel: user

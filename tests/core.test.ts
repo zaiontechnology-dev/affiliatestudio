@@ -80,7 +80,7 @@ describe('Zaion Smart Copy', () => {
   it('remove caracteres de controle de títulos externos', () => {
     const t = renderTemplate('{{produto}}', { produto: 'abc' })
     expect(t).toBe('abc')
-    const { text } = renderOfferMessage('{{produto}}', { ...base, title: 'Fone‮\u0000 top' })
+    const { text } = renderOfferMessage('{{produto}}', { ...base, title: 'Fone\u202E\u0000 top' })
     expect(text.startsWith('Fone top')).toBe(true)
   })
 

@@ -14,5 +14,5 @@ export default tseslint.config(
     rules: { 'react-hooks/rules-of-hooks': 'error', 'react-hooks/exhaustive-deps': 'warn' }
   },
   { files: ['src/main/**/*', 'src/**/*.ts', 'tests/**/*'], languageOptions: { globals: globals.node } },
-  { rules: { '@typescript-eslint/no-explicit-any': 'error', 'no-console': ['warn', { allow: ['warn', 'error'] }] } }
+  { rules: { '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_', varsIgnorePattern: '^_' }], '@typescript-eslint/no-explicit-any': 'error', 'no-console': ['warn', { allow: ['warn', 'error'] }] } }
 )

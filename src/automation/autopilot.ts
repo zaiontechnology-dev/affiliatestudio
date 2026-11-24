@@ -61,6 +61,10 @@ export class Autopilot {
    *  - 'validating'/'processing' → 'scheduled' (nada foi enviado).
    *  - Itens agendados que passaram da tolerância → 'expired' (não dispara em lote o que ficou para trás).
    */
+  get busy(): boolean {
+    return this.running
+  }
+
   recover(): { unknown: number; requeued: number; expired: number } {
     const now = this.now()
     const grace = this.repo.getSettings().missedPublicationGraceMinutes
@@ -448,7 +452,7 @@ export class Autopilot {
     const startedAt = this.now().toISOString()
     const account = this.repo.getChannelAccount(d.channelAccountId)
     const provider = this.deps.providers[account.channelId]
-    let creds: Record<string, string> = {}
+    let creds: Record<string, string>
     try {
       creds = account.secretRef ? (this.deps.secrets.get(account.secretRef) ?? {}) : {}
     } catch (e) {

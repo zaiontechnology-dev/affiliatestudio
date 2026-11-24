@@ -56,7 +56,7 @@ export function verifyBackupFile(file: string): void {
     if (!hasMigrations) throw new Error('Arquivo não é um banco do Zaion Affiliate Studio.')
   } catch (e) {
     const msg = (e as Error).message
-    throw new Error(msg.startsWith('Backup') || msg.startsWith('Arquivo') ? msg : `Backup inválido ou corrompido: ${msg}`)
+    throw new Error(msg.startsWith('Backup') || msg.startsWith('Arquivo') ? msg : `Backup inválido ou corrompido: ${msg}`, { cause: e })
   } finally {
     probe?.close()
   }

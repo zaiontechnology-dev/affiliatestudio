@@ -5,7 +5,7 @@ import { createHash } from 'node:crypto'
 
 /** Parser CSV (RFC 4180) com detecção de separador ; ou , */
 export function parseCsv(text: string): string[][] {
-  const src = text.replace(/^﻿/, '')
+  const src = text.replace(/^\uFEFF/, '')
   const firstLine = src.split(/\r?\n/, 1)[0] ?? ''
   const sep = (firstLine.match(/;/g)?.length ?? 0) > (firstLine.match(/,/g)?.length ?? 0) ? ';' : ','
   const rows: string[][] = []
@@ -48,7 +48,7 @@ function cell(v: unknown): string {
 }
 
 export function toCsv(headers: string[], rows: Array<Array<unknown>>): string {
-  return '﻿' + [headers.map(cell).join(';'), ...rows.map((r) => r.map(cell).join(';'))].join('\r\n')
+  return '\uFEFF' + [headers.map(cell).join(';'), ...rows.map((r) => r.map(cell).join(';'))].join('\r\n')
 }
 
 const ALIASES: Record<string, string[]> = {

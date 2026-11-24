@@ -48,7 +48,8 @@ const VAR_RE = /\{\{\s*([a-z_]+)\s*\}\}/g
 /** Remove caracteres de controle e limita tamanho de textos vindos de fontes externas. */
 export function sanitizeExternalText(s: string, max = 300): string {
   return s
-    .replace(/[\u0000-\u0008\u000B-\u001F\u007F​-‏‪-‮⁦-⁩]/g, '')
+    // eslint-disable-next-line no-control-regex -- remoção intencional de caracteres de controle
+    .replace(/[\u0000-\u0008\u000B-\u001F\u007F\u200B-\u200F\u202A-\u202E\u2066-\u2069]/g, '')
     .replace(/\s+/g, ' ')
     .trim()
     .slice(0, max)
