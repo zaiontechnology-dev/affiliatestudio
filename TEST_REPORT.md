@@ -14,7 +14,8 @@ Ambiente: container Linux (Ubuntu 24.04), Node 22.23 (Vitest) e Electron 45.4.1/
 | E2E no app real via IPC | OK — ver abaixo |
 | Empacotamento Windows (`win-unpacked`, .exe PE com ícone/metadados) | OK |
 | Instalador NSIS / portátil | **Não gerado** (exige Wine no Linux; instalação não autorizada) |
-| Instalação/desinstalação no Windows | **Não testado** |
+| Instalação no Windows (PC do proprietário) | **Aprovado** — app abriu, Dashboard e motor ativos |
+| Desinstalação no Windows | Não testado |
 
 ## E2E no app real (IPC do processo principal)
 Método inexistente rejeitado (`Método não permitido`) · payload inválido rejeitado pelo Zod · produto manual com link → destino WhatsApp assistido

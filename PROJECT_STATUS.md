@@ -13,7 +13,7 @@ Legenda: **Validado** (testado em condição real) · **Testado** (testes automa
 ## Critérios de aceitação (seção 32)
 | # | Critério | Status | Evidência / observação |
 |---|---|---|---|
-| 1 | Abertura normal no Windows | Pendente | App abre e funciona no Electron/Linux (Xvfb). `.exe` Windows empacotado, não executado em Windows. |
+| 1 | Abertura normal no Windows | **Validado** | 2026-11-24: instalado pelo proprietário no PC Windows; Dashboard abriu, ícone na barra de tarefas, ciclo do motor ativo (captura de tela enviada pelo proprietário). |
 | 2 | Persistência das configurações | Testado | `tests/database.test.ts`; E2E no app real |
 | 3 | Banco local funcional | Testado | migrations, integridade, transações, E2E |
 | 4 | Credenciais seguras | Implementado / Testado (lógica) | safeStorage/DPAPI; recusa texto puro. DPAPI real só no Windows. |
@@ -31,11 +31,11 @@ Legenda: **Validado** (testado em condição real) · **Testado** (testes automa
 | 16 | Funcionamento minimizado | Implementado | bandeja + motor independente da janela; não testado no Windows |
 | 17 | Recuperação após reinício | Testado | `recover()` |
 | 18 | Backup e restauração | Testado | VACUUM INTO + integrity_check + SHA-256 + restauração agendada |
-| 19 | Instalador Windows | Implementado · instalação não testada | Setup NSIS + portátil gerados no GitHub Actions (windows-latest, run 45459968170, artefato `zaion-affiliate-studio-windows`). Typecheck, lint e 81 testes também passaram no Windows. Falta instalar/desinstalar em um PC real. |
+| 19 | Instalador Windows | **Validado (instalação)** · desinstalação pendente | Setup NSIS + portátil gerados no GitHub Actions (windows-latest, run 45459968170, artefato `zaion-affiliate-studio-windows`). Typecheck, lint e 81 testes também passaram no Windows. Falta instalar/desinstalar em um PC real. |
 | 20 | Manual de utilização | Implementado | `USER_GUIDE.md` |
 | WA | WhatsApp em grupos tradicionais | Indisponível por restrição externa (automático) · Testado (assistido) | ver `INTEGRATIONS.md` |
 
-**O MVP NÃO está concluído**: itens 1, 5, 6, 7, 9 (real) e 19 dependem de credenciais ou de uma máquina Windows.
+**O MVP NÃO está concluído**: itens 5, 6, 7 e 9 (real) dependem de credenciais; 16 (bandeja) e desinstalação ainda não testados no Windows.
 
 ## Módulos
 | Módulo | Status |
