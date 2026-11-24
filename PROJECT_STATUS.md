@@ -31,7 +31,7 @@ Legenda: **Validado** (testado em condição real) · **Testado** (testes automa
 | 16 | Funcionamento minimizado | Implementado | bandeja + motor independente da janela; não testado no Windows |
 | 17 | Recuperação após reinício | Testado | `recover()` |
 | 18 | Backup e restauração | Testado | VACUUM INTO + integrity_check + SHA-256 + restauração agendada |
-| 19 | Instalador Windows | **Bloqueado aqui** | NSIS exige Wine no Linux (instalação negada). Gerar com `scripts/build-windows.ps1` no Windows. Entregue `.zip` do app. |
+| 19 | Instalador Windows | Implementado · instalação não testada | Setup NSIS + portátil gerados no GitHub Actions (windows-latest, run 45459968170, artefato `zaion-affiliate-studio-windows`). Typecheck, lint e 81 testes também passaram no Windows. Falta instalar/desinstalar em um PC real. |
 | 20 | Manual de utilização | Implementado | `USER_GUIDE.md` |
 | WA | WhatsApp em grupos tradicionais | Indisponível por restrição externa (automático) · Testado (assistido) | ver `INTEGRATIONS.md` |
 
@@ -61,8 +61,8 @@ Legenda: **Validado** (testado em condição real) · **Testado** (testes automa
 | Empacotamento Windows | `.exe` empacotado + `.zip`; NSIS/portátil Bloqueado aqui |
 
 ## 📍 Ponto de retomada
-1. **Preservar o código**: o proprietário deve autorizar publicação em repositório privado (GitHub) ou baixar o projeto.
-2. No Windows: `powershell -ExecutionPolicy Bypass -File scripts\build-windows.ps1` → instalar → testar critérios 1, 16, 19.
+1. Código publicado em github.com/zaiontechnology-dev/affiliatestudio (repositório **público** — recomendado torná-lo privado).
+2. Baixar o artefato do GitHub Actions (ou rodar `scripts\build-windows.ps1`) → instalar → testar critérios 1, 16, 19.
 3. Inserir credenciais Shopee (App ID/Secret) em *Contas de afiliados* → validar busca real, link real (critérios 5–7) e **revalidar nomes de campos** com a documentação do portal (`API_CAPABILITIES.md`).
 4. Criar bot do Telegram + canal de teste próprio → autorizar envio de teste → ativar campanha em modo semiautomático (critério 9).
 5. Próximo desenvolvimento: migrar para `safeStorage` assíncrono; conector AliExpress; testes de UI automatizados; assinatura de código.
